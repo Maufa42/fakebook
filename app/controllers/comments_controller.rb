@@ -6,14 +6,14 @@ class CommentsController < ApplicationController
     end
 
     def create
-        @comment = current_user.comment.create(comment_params)
-        @post = Post.find(params[:comment][:post_id])
-        if @comment.save
-            redirect_to @post
-        else
-            render 'new'
-        end
-    end
+                @comment = current_user.comment.create(comment_params)
+                @post = Post.find(params[:comment][:post_id])
+                if @comment.save
+                    redirect_to root_path
+                else
+                    render 'new'
+                end
+            end
 
     def destroy
         @comment = Comment.find[params[:id]]
@@ -22,6 +22,7 @@ class CommentsController < ApplicationController
         @comment.destroy
         flash[:notice] = 'Comment deleted'
         redirect_to root_path
+   
     end
 
     private

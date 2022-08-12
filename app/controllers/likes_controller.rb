@@ -1,16 +1,18 @@
-class LikesController < ApplicationControl
+class LikesController < ApplicationController
     def create
-        @like = current_user.like.new(like_params)
-
+        @like = current_user.likes.new(like_params)
+        
+        debugger
+        debugger
         if !@like.save
             flash[:notice] =  @like.errors.full_messages.to_sentence
         end
 
-        redirect_to @like.post
+        redirect_to root_path
     end
 
     def destroy
-        @like = current_user.likes.find(params[:id])
+        @like = current_user.likes.find_by(params[:id])
         post = @like.post
         @like.destroy
         redirect_to post
@@ -18,7 +20,7 @@ class LikesController < ApplicationControl
 
     private
     def like_params
-        params.require(:like).permit(:post_id)
+        params.permit(:post_id)
     end
 
 end
