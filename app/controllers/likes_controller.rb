@@ -2,8 +2,8 @@ class LikesController < ApplicationController
     def create
         @like = current_user.likes.new(like_params)
         
-        debugger
-        debugger
+        # debugger
+        # debugger
         if !@like.save
             flash[:notice] =  @like.errors.full_messages.to_sentence
         end
