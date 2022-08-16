@@ -1,0 +1,48 @@
+<%# Name: <%=u.name%> 
+<%# email: <%=u.email%><br> 
+<h1>My Friends</h1>
+  <%@friends.each do |fr|%>
+  Name:<%=fr.user.name%>
+  <%end%>
+<hr>
+<hr>
+
+<h1>Friend Request</h1>
+<% @pending.each do |p| %>
+<%= current_user.id%>
+Name: <%=p.user.name%>
+<%= button_to "Accept",accept_invite_path, params: {confirmed: true}, method: :post%> 
+<%end%>
+<hr>
+<hr>
+
+<h1>All User</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">User-Id</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%i = 1%>
+    <% @users.each do |u| %>
+    <tr>
+      <th scope="row"><%= i%></th>
+      <td><%=u.name%></td>
+      <td><%=u.email%></td>
+      <%if Invitation.reacted?(current_user[:id],u.id)%>
+      <td><%=link_to "Cancel Friend Request"%></td>
+      <%else%>
+      <td><%= u.id%></td>
+      <td><%=link_to "Add Friend",invitation_index_path(friends_id: u.id), method: :post%></td>
+      <%end%>
+    <%i+=1%>
+    </tr>
+   
+    <%end%>
+  </tbody>
+</table>

@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-
+    
 
     def new
         @comment = Comment.new
@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
                 if @comment.save
                     redirect_to root_path
                 else
-                    render 'new'
+                    redirect_to root_path
                 end
             end
 

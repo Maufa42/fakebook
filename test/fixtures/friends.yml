@@ -1,0 +1,21 @@
+# == Schema Information
+#
+# Table name: friends
+#
+#  id         :integer          not null, primary key
+#  confirmed  :boolean          default(FALSE)
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  friend_id  :integer
+#  user_id    :integer
+#
+
+one:
+  user_id: 1
+  friend_id: 1
+  confirmed: false
+
+two:
+  user_id: 1
+  friend_id: 1
+  confirmed: false

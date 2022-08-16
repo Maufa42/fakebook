@@ -6,7 +6,11 @@ Rails.application.routes.draw do
   end
 
   resources :likes, only: [:create,:destroy]
+  resources :invitation, only: [:index,:new,:create,:destroy]
+
   root "posts#index"
+  get 'all_user',to: "invitation#index"
+  post 'accept_invite', to: "invitation#accept"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
 end

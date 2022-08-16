@@ -27,4 +27,25 @@ class User < ApplicationRecord
   has_many :posts
   has_many :comments, dependent: :destroy 
   has_many :likes,dependent: :destroy
+
+  # Friend Request
+  has_many :invitations
+  has_many :pending_invite, -> {where confirmed: false}, class_name: "Invitation", foreign_key: "friends_id"
+
+    def friends
+      friend_i_sent = Invitation.where(user_id: id, confirmed: true).pluck(:friends_id)
+      friend_i_got = Invitation.where(friends_id:id,confirmed: true).pluck(:user_id)
+  
+      ids = friend_i_sent + friend_i_got
+      User.where(id: ids)
+    end
+
+    def friend_with?(user)
+      Invitation.confirmed_record?(id,user.id)
+    end
+
+    def send_invitation(user)
+      invitations.create(friends_id: user.id  )
+    end
+
 end
