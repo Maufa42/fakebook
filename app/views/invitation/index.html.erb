@@ -2,16 +2,16 @@
 <%# email: <%=u.email%><br> 
 <h1>My Friends</h1>
   <%@friends.each do |fr|%>
-  Name:<%=fr.user.name%>
+  Name:<%=fr.user.name%><br>
   <%end%>
 <hr>
 <hr>
 
 <h1>Friend Request</h1>
 <% @pending.each do |p| %>
-<%= current_user.id%>
-Name: <%=p.user.name%>
-<%= button_to "Accept",accept_invite_path, params: {confirmed: true}, method: :post%> 
+<%= p.user.id%>
+Name: <%=p.user.email%>
+<%= button_to "Accept",accept_invite_path, params: {id: p.id,confirmed: true}, method: :post%> 
 <%end%>
 <hr>
 <hr>

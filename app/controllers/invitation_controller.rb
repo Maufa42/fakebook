@@ -5,9 +5,9 @@ class InvitationController < ApplicationController
     @user = current_user
     # @user = User.find_by(params[:id])
     @pending = @user.pending_invite
-    debugger
-    @friends = Invitation.all.select { |m| m.confirmed == true && m.id == @user.id}
-    # @friends = Invitation.select(:id = current_user,confirmable: true)
+    @friends = Invitation.all.select{ |m| m.confirmed == true || (m.user_id == @user.id || m.friends_id == @user.id)}
+    # debugger
+    # @friends = Invitation.select(id: current_user.id,confirmable: true)
   end
 
   def new
@@ -23,7 +23,7 @@ class InvitationController < ApplicationController
   end
 
   def accept
-    @invitation = Invitation.find_by(params[:id])
+    @invitation = Invitation.find(params[:id])
     accept = @invitation.update(invite_params)
   end
 
