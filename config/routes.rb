@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # get 'users/show/:id', to: "users#show"
-  resources :users
-  devise_for :users
+  devise_for :users, controllers: { application: 'application' }
+  resources :users,only: [:show]
 
   resources :posts do
     resources :comments, only: [:create,:destroy]

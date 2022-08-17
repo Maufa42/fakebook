@@ -9,6 +9,12 @@
                   <li class="nav-item">
                     <a class="nav-link active text-white" aria-current="page" href="/"><i class="bi bi-house " style = "font-size: 2rem" ></i></a>
                   </li>
+                   <li class="nav-item">
+                  <%= link_to '<i class="bi bi-person" style = "font-size: 2rem"></i> '.html_safe,user_path(current_user[:id]), class: "nav-link active text-white" %>
+
+                  
+                  </li>
+                  
                   <li class="nav-item">
                   
                   <%= link_to '<i class="bi bi-people" style = "font-size: 2rem"></i> '.html_safe,all_user_path, class: "nav-link active text-white" %>
@@ -30,7 +36,7 @@
                       <%=link_to "Logout", destroy_user_session_path, method: :delete,class: "dropdown-item"%>
                       
                       <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                      <li>   <%=link_to current_user.name, edit_user_registration_path(:id=> current_user.id),class: "dropdown-item"%> </li>
                     </ul>
                   </li>
                   

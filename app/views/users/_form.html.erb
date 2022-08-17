@@ -1,0 +1,16 @@
+<div class = "form-group">
+<%= form_with(model: @user) do |form| %>
+  <% if @user.avatar.attached?%>
+    <%= image_tag @user.avatar, style: "width:200px; display: block"%>
+  <%end%>
+
+          <%# <%= form.hidden_field :user_id, value: current_user[:id]   %> 
+          <%= form.label :avatar%>
+          <%= form.file_field :avatar%>
+
+     <div class="actions">
+    <%= form.submit "Upload Photo"%>
+    </div>
+
+  <% end %>
+</div>
