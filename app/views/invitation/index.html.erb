@@ -1,12 +1,16 @@
 <%# Name: <%=u.name%> 
 <%# email: <%=u.email%><br> 
+<div class = "container position-absolute top-50 start-50 translate-middle">
+<div class= "sample">
 <h1>My Friends</h1>
   <%@friends.each do |fr|%>
   Name:<%=fr.user.name%><br>
   <%end%>
 <hr>
 <hr>
+</div>
 
+<div class = "sample">
 <h1>Friend Request</h1>
 <% @pending.each do |p| %>
 <%= p.user.id%>
@@ -15,7 +19,8 @@ Name: <%=p.user.email%>
 <%end%>
 <hr>
 <hr>
-
+</div>
+<div class = "sample">
 <h1>All User</h1>
 <table class="table">
   <thead>
@@ -32,7 +37,7 @@ Name: <%=p.user.email%>
     <% @users.each do |u| %>
     <tr>
       <th scope="row"><%= i%></th>
-      <td><%=u.name%></td>
+      <td><%=link_to u.name,user_path(u)%></td>
       <td><%=u.email%></td>
       <%if Invitation.reacted?(current_user[:id],u.id)%>
       <td><%=link_to "Cancel Friend Request"%></td>
@@ -46,3 +51,13 @@ Name: <%=p.user.email%>
     <%end%>
   </tbody>
 </table>
+</div>
+</div>
+<style>
+
+.sample {
+ position: relative;
+ top: 110px;
+}
+
+</style>

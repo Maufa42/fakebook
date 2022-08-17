@@ -7,9 +7,10 @@ class CommentsController < ApplicationController
 
     def create
                 @post = Post.find(params[:post_id])
-                @comment = @post.comments.create(comment_params)
+                @comment = @post.comments.create!(comment_params)
+                debugger
                 if @comment.save
-                    redirect_to root_path
+                    redirect_to all_user_path
                 else
                     redirect_to root_path
                 end

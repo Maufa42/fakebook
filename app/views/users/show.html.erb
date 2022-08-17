@@ -1,0 +1,15 @@
+<h1>User-Profile</h1>
+<h3>Name: <%= @user.name%></h3>
+<h4>Email: <%= @user.email%></h3>
+
+<h5>Information</h5>
+<%if @user.posts.empty?%>
+<p>Posts Created: <%= @user.posts.count %> </p>
+<p>Recent Post: Till Not Created </p>
+<% else %>
+<p>Posts Created: <%= @user.posts.count %> </p>
+<p>Recent Post: <%= @user.posts.first.name%></p>
+<% end %>
+
+<p>Total Friends: <%= @user.friends.count %></p>
+<p>Friend-Request Sent:</p>

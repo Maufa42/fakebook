@@ -1,23 +1,23 @@
-<nav class="navbar navbar-expand-lg bg-light">
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg" style="background-color: 			#3b5998;">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/">FAkebook</a>
+    <a class="navbar-brand text-white" href="/">Fakebook</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active text-white" aria-current="page" href="/"><i class="bi bi-house " style = "font-size: 2rem" ></i></a>
                   </li>
                   <li class="nav-item">
                   
-                  <%= link_to "Friend-List",all_user_path, class: "nav-link active"%>
-                    <%# <a class="nav-link active" href="#">Friend</a> %>
+                  <%= link_to '<i class="bi bi-people" style = "font-size: 2rem"></i> '.html_safe,all_user_path, class: "nav-link active text-white" %>
+
                   </li>
         </ul>
         <ul>
                   <li class="navbar dropdown ms-auto mb-2 mb-lg-0">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <% if user_signed_in? %>
                       <%=current_user.email%>
                       <% else %>

@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
+  # get 'users/show/:id', to: "users#show"
+  resources :users
   devise_for :users
 
   resources :posts do
     resources :comments, only: [:create,:destroy]
   end
-
   resources :likes, only: [:create,:destroy]
+
   resources :invitation, only: [:index,:new,:create,:destroy]
 
   root "posts#index"
