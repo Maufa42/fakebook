@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # get 'users/show/:id', to: "users#show"
-  devise_for :users, controllers: { application: 'application' }
-  resources :users,only: [:show]
+  devise_for :users, controllers: { application: 'application' }, :controllers => { :omniauth_callbacks => "callbacks" }
+  resources :users,only: [:show,:update,:edit]
 
   resources :posts do
     resources :comments, only: [:create,:destroy]

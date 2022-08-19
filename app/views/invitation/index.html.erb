@@ -1,7 +1,7 @@
 <%# Name: <%=u.name%> 
 <%# email: <%=u.email%><br> 
 <div class = "container position-absolute top-50 start-50 translate-middle">
-<div class= "sample">
+<div class= "sample2">
 <h1>My Friends</h1>
   <%@friends.each do |fr|%>
   Name:<%=fr.user.name%><br>
@@ -10,7 +10,7 @@
 <hr>
 </div>
 
-<div class = "sample">
+<div class = "sample2">
 <h1>Friend Request</h1>
 <% @pending.each do |p| %>
 <%= p.user.id%>
@@ -20,7 +20,7 @@ Name: <%=p.user.email%>
 <hr>
 <hr>
 </div>
-<div class = "sample">
+<div class = "sample2">
 <h1>All User</h1>
 <table class="table">
   <thead>
@@ -51,11 +51,13 @@ Name: <%=p.user.email%>
     <%end%>
   </tbody>
 </table>
+  </div>
 </div>
-</div>
+
+
 <style>
 
-.sample {
+.sample2 {
  position: relative;
  top: 110px;
 }

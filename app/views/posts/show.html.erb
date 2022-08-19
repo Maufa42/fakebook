@@ -1,5 +1,5 @@
 
-<div class = "container position-absolute top-50 start-50 translate-middle">
+<div class = "container position-absolute top-50 start-50 translate-middle" style = "margin-top: 40rem">
 
 
 <h1><%= @post.name %></h1><br><br>
@@ -9,7 +9,8 @@
 </p>
 
 <p>
-<%= image_tag @post.image%>
+<%# <%= url_for(@post.image) %> 
+<%= image_tag @post.image %>
 </p>
 
 <%= link_to 'Edit', edit_post_path(@post) %> 
@@ -32,7 +33,7 @@
                 
             </p>
             <p>
-              <strong><%= comment.content%></strong>
+              <%= comment.content%>
                 
             </p>
 

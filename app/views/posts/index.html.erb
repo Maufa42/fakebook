@@ -1,36 +1,24 @@
-<div class = "container position-absolute top-50 start-50 translate-middle">
+
+<div class = "container sample ">
 
 <h1>Posts</h1>
+<% @posts.each do |post|%>
+Author:<%=link_to post.name,post_path(post)%><br>
+Description: <%= post.description%><br>
+<%# <% debugger %> 
+<%= image_tag post.image , style:"width:720px;height:340px"%>
 
-<table>
-  <thead>
-    <tr>
-      <%# <th></th> %>
-      <th>Title</th>
-      <th>Like</th>
-      <th>Count</th>
-      <th>Show</th>
-      <th>Edit</th>
-      <th>Destroy</th>
+    <% like = current_user.likes.find_by(post: post) %>
+          <% if like.nil? %>
+          <%=button_to "Like",likes_path(post_id: post[:id]) %>
+          <%else%>  
+          <%=button_to "Unlike",likes_path(post_id: post[:id]), method: :delete %>
+          <%end%>
+          <%= post.likes.count %>
+          <br><br><hr>
+<%end%>
 
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%=link_to post.name,post%></td>
-        <td><%= link_to "Like",url = "/likes/#{post.id}"%></td>
-        <td><%=post.likes.count%></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Post', new_post_path %>
+<h5><%= link_to 'New Post', new_post_path %>
+</h5>
 </div>
+

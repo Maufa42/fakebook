@@ -21,10 +21,13 @@ gem 'jbuilder', '~> 2.7'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
+
+gem 'omniauth-github'
 gem 'devise'
+gem "omniauth-rails_csrf_protection"
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
-
+gem 'mini_magick', '~> 4.11'
 # Custom User-Gem 
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 
@@ -50,6 +53,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
     gem 'annotate'
+    gem "letter_opener"
 end
 
 group :test do
